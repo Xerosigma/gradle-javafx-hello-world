@@ -1,18 +1,31 @@
 // Declares binary plugin and its required JavaFX classpath
-apply from: "http://dl.bintray.com/content/shemnon/javafx-gradle/0.3.0/javafx.plugin"
+apply from: "http://dl.bintray.com/content/shemnon/javafx-gradle/8.1.1/javafx.plugin"
+
+buildscript {
+    repositories {}
+    dependencies {}
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+}
 
 // Configures plugin
 javafx {
     // Points to JDK and its JavaFX libraries, also declares target runtime JDK
     javaRuntime = '/Library/Java/JavaVirtualMachines/jdk1.7.0_40.jdk'
-    
+
     // Application name and ID presented by target OS
     appID 'HelloWorldApp'
     appName 'Hello World Application'
-    
+
     // Main class of application
-    mainClass 'helloworld.HelloWorld'
-    
+    mainClass 'com.nestorledon.gpshopper.tools.ezbonus.HelloWorld'
+
     // JVM arguments, system properties, application command line arguments
     jvmArgs = ['-XX:+AggressiveOpts', '-XX:CompileThreshold=1']
     systemProperties = ['prism.disableRegionCaching':'true']
@@ -26,12 +39,16 @@ javafx {
         keyStore = file("${System.properties['user.home']}/keystore/keystore.jks")
         storePass = getProjectProperty('storePassword')
     }
-    
+
     signingMode 'release'
-    
+
     // ...
 }
 
 String getProjectProperty(String propertyName) {
     project.hasProperty(propertyName) ? project.property(propertyName) : null
+}
+
+dependencies {
+    compile 'com.github.Xerosigma:JFoenix:1.0.0'
 }

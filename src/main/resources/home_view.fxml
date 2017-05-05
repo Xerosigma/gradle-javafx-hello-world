@@ -1,0 +1,87 @@
+<?import com.nestorledon.gpshopper.tools.ezbonus.modules.home.HomeView?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import javafx.scene.layout.BorderPane?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.geometry.Insets?>
+<?import com.jfoenix.controls.JFXListView?>
+<HomeView fx:controller="com.nestorledon.gpshopper.tools.ezbonus.modules.home.HomeController"
+          xmlns:fx="http://javafx.com/fxml">
+
+    <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+
+    <StackPane fx:id="content" HomeView.topAnchor="0.0" HomeView.bottomAnchor="0.0" HomeView.leftAnchor="0.0" HomeView.rightAnchor="0.0">
+
+        <!-- Fields -->
+        <VBox>
+            <HBox>
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Company Performance Factor"/>
+                <JFXTextField id=""/>
+            </HBox>
+
+            <HBox HomeView.topAnchor="0.0" HomeView.bottomAnchor="0.0" HomeView.leftAnchor="0.0" HomeView.rightAnchor="0.0">
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Individual Performance Rating"/>
+                <JFXButton
+                        fx:id="performanceRatingView"
+                        text="calculate"
+                        buttonType="FLAT"
+                        style="-fx-background-color: #336699;"/>
+                <JFXListView fx:id="listView" visible="false" maxWidth="Infinity"/>
+            </HBox>
+
+
+            <!-- Tasks -->
+            <HBox>
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Number of Tasks"/>
+                <JFXTextField fx:id="tasksCountView"/>
+            </HBox>
+
+            <HBox>
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Tasks Missing Original Estimate"/>
+                <JFXTextField fx:id="tasksMissingEstimateView"/>
+            </HBox>
+
+
+            <!-- Hours -->
+            <HBox>
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Total Days"/>
+                <JFXTextField fx:id="daysTotalView"/>
+            </HBox>
+
+            <HBox>
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <Label text="Days with Above Average Hours (6+)"/>
+                <JFXTextField fx:id="daysAboveAverageView"/>
+            </HBox>
+
+            <HBox>
+                <padding><Insets top="8" right="8" bottom="8" left="8"/></padding>
+                <JFXButton
+                        fx:id="submit"
+                        text="calculate"
+                        buttonType="RAISED"
+                        style="-fx-background-color: #336699;"/>
+            </HBox>
+        </VBox>
+
+
+        <!-- Spinner - TODO: Custom View -->
+        <StackPane fx:id="loadingView" visible="false">
+            <BorderPane style="-fx-background-color: rgba(0, 0, 0, 0.3);"></BorderPane>
+            <JFXSpinner></JFXSpinner>
+        </StackPane>
+
+    </StackPane>
+
+    <!-- <fx:include source="statusbar.fxml"/> -->
+
+</HomeView>
